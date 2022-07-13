@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 '''TReich | Alta3 Research
-    Learning for loops'''
+    Learning functions'''
 
 # Create a list of shows
 shows = ["The Crown",
@@ -9,21 +9,30 @@ shows = ["The Crown",
         "Arrested Development",
         "The Great British Baking Show"]
 
+# Now let's say we have a second list of shows we want to loop through... do we have to copy the same code again??
+shows_2 = ["The Simpsons",
+            "The Office",
+            "Seinfeld",
+            "Friends"]
 # Create a list of corresponding times I have seen each show
 times_watched = [0.5, 0, 1, 10, 25]
 
-# I only want to print the shows with fewer than 10 characters in their title
-for show in shows:
-    if len(show) < 10:
-        print(show)
+# No!! All we need to do is define a function that will do that same for loop on any given list of shows
+def short_shows(list_of_shows):
+    for show in list_of_shows:
+        word_list = show.split() #.split() returns a list
+        if len(word_list)<=2:
+            print(show)
 
-# Now I only want to print shows with at most 2 words in their title
+# Now we can call on the custom function on both lists!
+short_shows(shows)
+short_shows(shows_2)
 
-for show in shows:
-    word_list = show.split() #.split() returns a list
-    if len(word_list)<=2:
-        print(show)
+# Note that you can define a custom function without a necessary argument if it doesn't rely on any other variables
+def two_plus_four():
+    print(2+4)
 
+two_plus_four()
 # Next, I want to create a dictionary that maps each show title as a key to its corresponding number of viewings
 if len(shows) == len(times_watched): #first check to make sure the lists have the same length
     show_times = {}
